@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Site.Title }} — Computational geometry, in pure Go. Planned, wave 2.</title>
+<meta name="description" content="{{ .Site.Params.description }}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+{{ partial "styles.html" . }}
+</head>
+<body class="lm">
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="/"><img class="glyph" src="/img/logo.svg" width="32" height="32" alt="go-geometry logo"> {{ .Site.Title }}</a>
+    <nav><a href="#features">Scope</a><a href="#checks">Checks</a><a href="#repos">Repositories</a></nav>
+    {{ partial "theme-toggle.html" . }}
+  </div></header>
+  {{ partial "fork-ribbon.html" "https://github.com/go-geometry" }}
+
+  <div class="hero"><div class="wrap">
+    <div>
+      <h1 class="head">Computational geometry, in pure Go.<br><span class="accent">Exact predicates first, then everything built on them.</span></h1>
+      <p class="sub">go-geometry is <b>planned</b> (wave 2 of the <a href="https://github.com/go-scikit/roadmap">go-scikit roadmap</a>): <b>robust geometric predicates</b>, <b>convex hulls</b>, <b>Delaunay</b> and <b>Voronoi</b>, <b>k-d trees</b> and <b>mesh generation</b>, validated against the tools that are the reference in the domain. No repository holds code yet.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://go-geometry.github.io/docs/">{{ partial "icons/book.html" . }}Read the plan →</a>
+        <a class="btn btn-ghost" href="https://github.com/go-scikit/roadmap/blob/main/PLAN.md">{{ partial "icons/github.html" . }}PLAN.md →</a>
+      </div>
+      <div class="trust"><span><b>planned</b> (wave 2)</span><span><b>{{ len .Site.Params.packages }}</b> packages in the plan</span><span><b>CGO=0</b> pure Go</span></div>
+    </div>
+    <div class="term">
+      <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">status</span></div>
+<pre style="white-space:pre;overflow-x:auto;tab-size:4">status    planned (wave 2)
+package   predicates (wave 2)
+package   hull (wave 2)
+package   nearest (wave 2)
+package   meshgen (wave 3)
+plan      github.com/go-scikit/roadmap</pre>
+    </div>
+  </div></div>
+
+  <div class="strip"><div class="wrap">
+    <span class="lead-line">{{ len .Site.Params.repos }} repositories — <b>no library yet</b>: planned, wave 2</span>
+    <div class="mods">{{ range .Site.Params.repos }}<a href="{{ .href }}">{{ .name }}</a>{{ end }}</div>
+  </div></div>
+
+  <section id="features"><div class="wrap">
+    <span class="eyebrow">What it will cover</span>
+    <h2>Scope: robust predicates, convex hulls, Delaunay, Voronoi, k-d trees, mesh generation.</h2>
+    <p class="lead">Nothing here is released. This is the scope of the plan, as <a href="https://github.com/go-scikit/roadmap/blob/main/PLAN.md">PLAN.md</a> states it: item 7 of wave 2 (exact predicates, Quickhull, Delaunay, Voronoi, alpha shapes, k-d trees) and, in wave 3, item 13 (meshing).</p>
+    <div class="grid">
+      <div class="card"><div class="ico">∎</div><h3>Exact predicates</h3><p>Adaptive-precision <code>orient2d</code>, <code>orient3d</code>, <code>incircle</code> and <code>insphere</code>: the exact sign at close to floating-point cost. Planned first, because every other item silently builds invalid topology without them.</p></div>
+      <div class="card"><div class="ico">△</div><h3>Hulls, Delaunay, Voronoi</h3><p>Quickhull in n dimensions, Delaunay triangulations in 2D and 3D, Voronoi diagrams and alpha shapes: the MATLAB <code>convhull</code>, <code>delaunay</code>, <code>voronoi</code> and <code>alphaShape</code> surface.</p></div>
+      <div class="card"><div class="ico">⌖</div><h3>Nearest neighbours</h3><p>k-d trees with exact neighbour search and a MATLAB-style <code>knnsearch</code>, adopting gonum's trees rather than rewriting them.</p></div>
+      <div class="card"><div class="ico">▦</div><h3>Mesh generation</h3><p>Constrained Delaunay triangulation with Ruppert refinement in 2D, then 3D, in wave 3: the meshes go-fem solves on.</p></div>
+      <div class="card"><div class="ico">🎯</div><h3>Robust by construction</h3><p>Hulls and triangulations are never shipped before the predicates they depend on, and are validated with the exact predicates, not with floating-point ones.</p></div>
+      <div class="card"><div class="ico">⚖️</div><h3>Licences kept clean</h3><p>Triangle, TetGen, CGAL and Gmsh are oracles only, run as external programs; nothing of them is ported.</p></div>
+    </div>
+  </div></section>
+
+  <section id="checks" style="padding-top:10px"><div class="wrap">
+    <span class="eyebrow">What will be checked</span>
+    <h2>{{ len .Site.Params.checks }} kinds of check, each <i>against the reference tool of the domain</i>.</h2>
+    <p class="lead">Every item of the plan is validated against the tools that are the reference in its domain, driven as oracles from Go. These are plans, taken from the roadmap's bibliography; no result exists yet.</p>
+    <div class="grid">
+      {{ range .Site.Params.checks }}
+      <div class="card"><h3>{{ .name }}</h3><p>{{ .what | markdownify }}</p></div>
+      {{ end }}
+    </div>
+  </div></section>
+
+  <section id="repos" style="padding-top:20px"><div class="wrap">
+    <span class="eyebrow">Repositories and packages</span>
+    <h2>What is here, and what is planned.</h2>
+    <div class="road">
+      {{ range .Site.Params.repos }}
+      <div class="ph">
+        <div class="top"><h4><a href="{{ .href }}">{{ .name }}</a></h4><span class="tag active">{{ .kind }}</span></div>
+        <p>{{ .blurb | safeHTML }}</p>
+      </div>
+      {{ end }}
+      {{ range .Site.Params.packages }}
+      <div class="ph">
+        <div class="top"><h4><a href="{{ .href }}">{{ .name }}</a></h4><span class="tag active">planned (wave {{ .wave }})</span></div>
+        <p>{{ .blurb }} No repository yet; the name is a working name.</p>
+      </div>
+      {{ end }}
+    </div>
+  </div></section>
+
+  <section id="eco" style="padding-top:6px"><div class="wrap">
+    <div class="band">
+      <h2>Planned, in the open.</h2>
+      <p>The plan and its progress are public: <a href="https://github.com/go-scikit/roadmap/blob/main/PLAN.md"><u>PLAN.md</u></a> says what each domain covers and in which wave, <a href="https://github.com/go-scikit/roadmap/blob/main/STATUS.md"><u>STATUS.md</u></a> says where each item stands. The <a href="https://go-geometry.github.io/docs/"><u>documentation</u></a> describes the planned packages and the references they will be validated against.</p>
+      <a class="btn btn-ghost" href="https://github.com/go-geometry">{{ partial "icons/github.html" . }}See the organization on GitHub →</a>
+    </div>
+  </div></section>
+
+  <footer><div class="wrap"><span>go-geometry · <a href="https://github.com/go-geometry">go-geometry on GitHub</a> · BSD-3-Clause</span><span>planned · wave 2</span></div></footer>
+</body>
+</html>
