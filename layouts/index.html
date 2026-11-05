@@ -19,7 +19,7 @@
   <div class="hero"><div class="wrap">
     <div>
       <h1 class="head">Computational geometry, in pure Go.<br><span class="accent">Exact predicates first, then everything built on them.</span></h1>
-      <p class="sub">go-geometry is <b>planned</b> (wave 2 of the <a href="https://github.com/go-scikit/roadmap">go-scikit roadmap</a>): <b>robust geometric predicates</b>, <b>convex hulls</b>, <b>Delaunay</b> and <b>Voronoi</b>, <b>k-d trees</b> and <b>mesh generation</b>, validated against the tools that are the reference in the domain. No repository holds code yet.</p>
+      <p class="sub">go-geometry is <b>planned</b> (wave 2 of the <a href="https://github.com/go-scikit/roadmap">go-scikit roadmap</a>): <b>robust geometric predicates</b>, <b>convex hulls</b>, <b>Delaunay</b> and <b>Voronoi</b>, <b>k-d trees</b> and <b>mesh generation</b>, validated against the tools that are the reference in the domain. The first library is released: <a href="https://github.com/go-geometry/predicates"><b>predicates</b> v0.1.0</a>, exact geometric predicates; the rest is planned.</p>
       <div class="cta">
         <a class="btn btn-primary" href="https://go-geometry.github.io/docs/">{{ partial "icons/book.html" . }}Read the plan →</a>
         <a class="btn btn-ghost" href="https://github.com/go-scikit/roadmap/blob/main/PLAN.md">{{ partial "icons/github.html" . }}PLAN.md →</a>
@@ -29,7 +29,7 @@
     <div class="term">
       <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">status</span></div>
 <pre style="white-space:pre;overflow-x:auto;tab-size:4">status    planned (wave 2)
-package   predicates (wave 2)
+released  predicates v0.1.0
 package   hull (wave 2)
 package   nearest (wave 2)
 package   meshgen (wave 3)
@@ -38,7 +38,7 @@ plan      github.com/go-scikit/roadmap</pre>
   </div></div>
 
   <div class="strip"><div class="wrap">
-    <span class="lead-line">{{ len .Site.Params.repos }} repositories — <b>no library yet</b>: planned, wave 2</span>
+    <span class="lead-line">{{ len .Site.Params.repos }} repositories — <b>first library released</b>: predicates v0.1.0</span>
     <div class="mods">{{ range .Site.Params.repos }}<a href="{{ .href }}">{{ .name }}</a>{{ end }}</div>
   </div></div>
 
@@ -59,7 +59,7 @@ plan      github.com/go-scikit/roadmap</pre>
   <section id="checks" style="padding-top:10px"><div class="wrap">
     <span class="eyebrow">What will be checked</span>
     <h2>{{ len .Site.Params.checks }} kinds of check, each <i>against the reference tool of the domain</i>.</h2>
-    <p class="lead">Every item of the plan is validated against the tools that are the reference in its domain, driven as oracles from Go. These are plans, taken from the roadmap's bibliography; no result exists yet.</p>
+    <p class="lead">Every item of the plan is validated against the tools that are the reference in its domain, driven as oracles from Go. The first is a result of predicates v0.1.0; the others are plans, taken from the roadmap's bibliography.</p>
     <div class="grid">
       {{ range .Site.Params.checks }}
       <div class="card"><h3>{{ .name }}</h3><p>{{ .what | markdownify }}</p></div>

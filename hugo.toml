@@ -19,23 +19,24 @@ disableKinds = ['taxonomy', 'term', 'rss', 'sitemap', '404']
   description = "go-geometry (planned, wave 2): robust predicates, convex hulls, Delaunay triangulations, Voronoi diagrams, k-d trees and mesh generation in pure Go (CGO=0), validated against SciPy, Octave and the Qhull and Triangle binaries."
 
 # Every field below is rendered by layouts/index.html. A field nothing renders
-# does not stay true. The organization is planned: no library has a repository.
+# does not stay true. One library is released (predicates); the packages
+# below the repositories are planned.
 [[params.repos]]
   name  = "docs"
   kind  = "site"
   href  = "https://go-geometry.github.io/docs/"
   blurb = "The documentation (Hugo + Hextra): the scope, the plan and one page per planned package, with its references. <a href=\"https://github.com/go-geometry/docs\">Source →</a>"
 [[params.repos]]
+  name  = "predicates"
+  kind  = "library v0.1.0"
+  href  = "https://github.com/go-geometry/predicates"
+  blurb = "Exact geometric predicates: adaptive-precision <code>Orient2D</code>, <code>InCircle</code>, <code>Orient3D</code>, <code>InSphere</code> (Shewchuk 1997) and exact <code>OrientN</code>, <code>InSphereN</code> up to 16 dimensions. The sign is exact for every finite input and the bits are identical on every architecture. <a href=\"https://go-geometry.github.io/docs/latest/predicates/\">Docs →</a>"
+[[params.repos]]
   name  = "brand"
   kind  = "assets"
   href  = "https://github.com/go-geometry/brand"
   blurb = "Logos and icons for the organization, in SVG / PNG / JPG / ICO / ICNS across colour, white and black variants."
 
-[[params.packages]]
-  name  = "predicates"
-  wave  = 2
-  href  = "https://go-geometry.github.io/docs/latest/predicates/"
-  blurb = "Exact geometric predicates at near floating-point cost."
 [[params.packages]]
   name  = "hull"
   wave  = 2
@@ -52,11 +53,12 @@ disableKinds = ['taxonomy', 'term', 'rss', 'sitemap', '404']
   href  = "https://go-geometry.github.io/docs/latest/meshgen/"
   blurb = "Constrained Delaunay triangulation and quality mesh generation, 2D then 3D."
 
-# The cards of #checks and their count come from this list. Each statement is
-# a plan, from the roadmap's bibliography, not a result.
+# The cards of #checks and their count come from this list. The first is a
+# result (predicates v0.1.0); the others are plans from the roadmap's
+# bibliography, marked (planned).
 [[params.checks]]
   name = "Predicates against exact arithmetic"
-  what = "The sign of every predicate is compared with <code>big.Rat</code> arithmetic on random and near-degenerate input: zero mismatches allowed. (planned)"
+  what = "The sign of every predicate is compared with <code>big.Rat</code> arithmetic on random, near-degenerate, exactly degenerate and huge / tiny input: zero mismatches, and planted breaks of the error bounds must be caught. (predicates v0.1.0)"
 [[params.checks]]
   name = "Combinatorial validity"
   what = "Euler relation and the empty-circumsphere test with exact predicates; vertex sets equal to SciPy's (Qhull) up to legitimate degeneracies. (planned)"
