@@ -4,8 +4,9 @@ The go-geometry landing page (Hugo), served at <https://go-geometry.github.io/>.
 The documentation is at <https://go-geometry.github.io/docs/> (repository
 [go-geometry/docs](https://github.com/go-geometry/docs)).
 
-The organization is **planned (wave 2)**: it holds no library yet, and the page
-says so, with what it will cover and a link to the plan in
+The organization is in **wave 2**: its first library,
+[predicates](https://github.com/go-geometry/predicates) v0.1.0, is released;
+the page lists it with the planned packages and links to the plan in
 [go-scikit/roadmap](https://github.com/go-scikit/roadmap).
 
 The layout is the go-* family template: `layouts/index.html` and the shared
