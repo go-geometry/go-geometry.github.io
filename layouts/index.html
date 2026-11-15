@@ -20,10 +20,8 @@
     <div>
       <h1 class="head">Computational geometry, in pure Go.<br><span class="accent">Exact predicates first, then everything built on them.</span></h1>
       <p class="sub">go-geometry is <b>planned</b> (wave 2 of the <a href="https://github.com/go-scikit/roadmap">go-scikit roadmap</a>): <b>robust geometric predicates</b>, <b>convex hulls</b>, <b>Delaunay</b> and <b>Voronoi</b>, <b>k-d trees</b> and <b>mesh generation</b>, validated against the tools that are the reference in the domain. The first library is released: <a href="https://github.com/go-geometry/predicates"><b>predicates</b> v0.1.0</a>, exact geometric predicates; the rest is planned.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="https://go-geometry.github.io/docs/">{{ partial "icons/book.html" . }}Read the plan →</a>
-        <a class="btn btn-ghost" href="https://github.com/go-scikit/roadmap/blob/main/PLAN.md">{{ partial "icons/github.html" . }}PLAN.md →</a>
-      </div>
+      {{/* [[params.cta]] in hugo.toml: the kit renders the row */}}
+      {{ partial "cta.html" . }}
       <div class="trust"><span><b>planned</b> (wave 2)</span><span><b>{{ len .Site.Params.packages }}</b> packages in the plan</span><span><b>CGO=0</b> pure Go</span></div>
     </div>
     <div class="term">
@@ -94,6 +92,6 @@ plan      github.com/go-scikit/roadmap</pre>
     </div>
   </div></section>
 
-  <footer><div class="wrap"><span>go-geometry · <a href="https://github.com/go-geometry">go-geometry on GitHub</a> · BSD-3-Clause</span><span>planned · wave 2</span></div></footer>
+  <footer><div class="wrap"><span>go-geometry · <a href="https://github.com/go-geometry">go-geometry on GitHub</a>{{ if not (partial "mantra-on.html" $) }} · BSD-3-Clause{{ end }}</span><span>planned · wave 2</span></div></footer>
 </body>
 </html>
